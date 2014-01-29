@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="EntryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BigMathNumberTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\bigmath\bigmath.csproj">
