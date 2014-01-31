@@ -17,8 +17,15 @@ namespace bigmath
       /// <returns></returns>
       public static String Add(String Left, String Right)
       {
-        string RetVal = String.Empty;
-        return RetVal; 
+        var leftNumber = new BigMathNumber();
+        var rightNumber = new BigMathNumber();
+        leftNumber.SetValue(Left);
+        rightNumber.SetValue(Right);
+
+        var answer = leftNumber + rightNumber;
+
+        var answerResponse = answer.ToString();
+        return answerResponse; 
       }
 
       /// <summary>
@@ -29,8 +36,15 @@ namespace bigmath
       /// <returns></returns>
       public static String Subtract(String Left, String Right)
       {
-        string RetVal = String.Empty;
-        return RetVal; 
+        var leftNumber = new BigMathNumber();
+        var rightNumber = new BigMathNumber();
+        leftNumber.SetValue(Left);
+        rightNumber.SetValue(Right);
+
+        var answer = leftNumber - rightNumber;
+
+        var answerResponse = answer.ToString();
+        return answerResponse;
       }
 
       /// <summary>
@@ -41,8 +55,15 @@ namespace bigmath
       /// <returns></returns>
       public static String Multiply(String Left, String Right)
       {
-        string RetVal = String.Empty;
-        return RetVal;
+        var leftNumber = new BigMathNumber();
+        var rightNumber = new BigMathNumber();
+        leftNumber.SetValue(Left);
+        rightNumber.SetValue(Right);
+
+        var answer = leftNumber * rightNumber;
+
+        var answerResponse = answer.ToString();
+        return answerResponse;
       }
 
       /// <summary>
@@ -53,8 +74,15 @@ namespace bigmath
       /// <returns></returns>
       public static String Divide(String Dividend, String Devisor)
       {
-        string RetVal = String.Empty;
-        return RetVal;
+        var leftNumber = new BigMathNumber();
+        var rightNumber = new BigMathNumber();
+        leftNumber.SetValue(Dividend);
+        rightNumber.SetValue(Devisor);
+
+        var answer = leftNumber / rightNumber;
+
+        var answerResponse = answer.ToString();
+        return answerResponse;
       }
 
       /// <summary>
@@ -62,11 +90,12 @@ namespace bigmath
       /// </summary>
       /// <param name="Number"></param>
       /// <returns></returns>
-      public static String Factoral(String Number)
+      public static String Factorial(String Number)
       {
         string RetVal = String.Empty;
         return RetVal;
       }
+      
 
       /// <summary>
       /// Returns the result of BaseNumber^Exponent

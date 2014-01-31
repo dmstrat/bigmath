@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1DFA22CC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bigmath.Tests.Unit", "Tests\bigmath.Tests.Unit\bigmath.Tests.Unit.csproj", "{5D5E1508-20FB-4B9A-A1F3-7ADB21DE6307}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bigmath.Tests.Integration", "Tests\bigmath.Tests.Integration\bigmath.Tests.Integration.csproj", "{8002EC4C-8DE5-4B62-BD14-7DC764ACF7E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,11 +23,16 @@ Global
 		{5D5E1508-20FB-4B9A-A1F3-7ADB21DE6307}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D5E1508-20FB-4B9A-A1F3-7ADB21DE6307}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D5E1508-20FB-4B9A-A1F3-7ADB21DE6307}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8002EC4C-8DE5-4B62-BD14-7DC764ACF7E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8002EC4C-8DE5-4B62-BD14-7DC764ACF7E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8002EC4C-8DE5-4B62-BD14-7DC764ACF7E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8002EC4C-8DE5-4B62-BD14-7DC764ACF7E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5D5E1508-20FB-4B9A-A1F3-7ADB21DE6307} = {1DFA22CC-96EF-4C3B-8EB1-B49F0D10D658}
+		{8002EC4C-8DE5-4B62-BD14-7DC764ACF7E8} = {1DFA22CC-96EF-4C3B-8EB1-B49F0D10D658}
 	EndGlobalSection
 EndGlobal
