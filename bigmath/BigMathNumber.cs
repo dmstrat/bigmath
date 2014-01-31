@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace bigmath
 {
-  public class BigMathNumber :  IEquatable<BigMathNumber>
+  internal class BigMathNumber :  IEquatable<BigMathNumber>
   {
-    private List<sbyte> internalNumber;
+    public List<sbyte> internalNumber {get;set;}
 
     public BigMathNumber()
     {
@@ -20,6 +20,34 @@ namespace bigmath
       internalNumber = new List<sbyte>();
       sbyte newNumber = 0;
       internalNumber.Add(newNumber); //init as zero
+    }
+
+    public static BigMathNumber operator +(BigMathNumber left, BigMathNumber right)
+    {
+      BigMathNumber answer = new BigMathNumber();
+      answer = BigMathHelper.Add(left, right);
+      return answer;
+    }
+
+    public static BigMathNumber operator -(BigMathNumber left, BigMathNumber right)
+    {
+      BigMathNumber answer = new BigMathNumber();
+      answer = BigMathHelper.Subtract(left,right);
+      return answer;
+    }
+
+    public static BigMathNumber operator *(BigMathNumber left, BigMathNumber right)
+    {
+      BigMathNumber answer = new BigMathNumber();
+
+      return answer;
+    }
+
+    public static BigMathNumber operator /(BigMathNumber left, BigMathNumber right)
+    {
+      BigMathNumber answer = new BigMathNumber();
+
+      return answer;
     }
 
     public static bool operator ==(BigMathNumber left, BigMathNumber right)

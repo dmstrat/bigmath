@@ -42,7 +42,7 @@ namespace bigmath.Tests.Unit
     public void AssertStaticFactoralMethod()
     {
       var testNumber = "1";
-      var testResult = BigMath.Factoral(testNumber);
+      var testResult = BigMath.Factorial(testNumber);
     }
 
     [TestMethod]
