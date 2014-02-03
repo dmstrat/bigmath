@@ -92,10 +92,12 @@ namespace bigmath
       /// <returns></returns>
       public static String Factorial(String Number)
       {
-        string RetVal = String.Empty;
-        return RetVal;
+        var valueNumber = new BigMathNumber();
+        valueNumber.SetValue(Number);
+        var answer = BigMathHelper.Factorial(valueNumber);
+        var returnValue = answer.ToString();
+        return returnValue;
       }
-      
 
       /// <summary>
       /// Returns the result of BaseNumber^Exponent
