@@ -30,13 +30,13 @@ namespace bigmath.Tests.Unit
       var testResult = BigMath.Multiply(testLeft, testRight);
     }
 
-    [TestMethod]
-    public void AssertStaticDivideMethod()
-    {
-      var testTop = "1";
-      var testBottom = "1";
-      var testResult = BigMath.Add(testTop, testBottom);
-    }
+    //[TestMethod]
+    //public void AssertStaticDivideMethod()
+    //{
+    //  var testTop = "1";
+    //  var testBottom = "1";
+    //  var testResult = BigMath.Add(testTop, testBottom);
+    //}
 
     [TestMethod]
     public void AssertStaticFactoralMethod()

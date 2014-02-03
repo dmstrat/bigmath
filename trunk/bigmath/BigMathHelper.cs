@@ -366,5 +366,39 @@ namespace bigmath
       carryList[positionFrom + 1] = amountToCarryOver;
     }
 
+    internal static BigMathNumber Factorial(BigMathNumber Value)
+    {
+      List<sbyte> value = Value.internalNumber;
+      List<sbyte> answer = Factorial(value);
+
+      BigMathNumber theAnswer = new BigMathNumber();
+      theAnswer.internalNumber = answer;
+      return theAnswer;
+    }
+
+    private static List<sbyte> Factorial(List<sbyte> Number)
+    {
+      List<sbyte> retVal = new List<sbyte>();
+      List<sbyte> curNum = new List<sbyte>();
+      curNum.AddRange(Number);
+      List<sbyte> decrementor = new List<sbyte>();
+      decrementor.Add(Convert.ToSByte(1));
+
+      List<sbyte> answer = new List<sbyte>();
+
+      answer.AddRange(curNum); //copy curNum to answer
+      curNum = Subtract(curNum, decrementor);
+      while (FirstNumberIsBigger(curNum, decrementor))
+      {
+        answer = Multiply(answer, curNum);
+        curNum = Subtract(curNum, decrementor);
+      }
+
+      retVal.AddRange(answer);
+      return retVal;
+    }
+
+
+
   }
 }
