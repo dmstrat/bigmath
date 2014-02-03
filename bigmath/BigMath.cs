@@ -107,8 +107,13 @@ namespace bigmath
       /// <returns></returns>
       public static String Exponential(String BaseNumber, String Exponent)
       {
-        string RetVal = String.Empty;
-        return RetVal;
+        var baseNumber = new BigMathNumber();
+        var exponent = new BigMathNumber();
+        baseNumber.SetValue(BaseNumber);
+        exponent.SetValue(Exponent);
+        var answer = BigMathHelper.Exponential(baseNumber, exponent);
+        var returnValue = answer.ToString();
+        return returnValue;
       }
     }
 }

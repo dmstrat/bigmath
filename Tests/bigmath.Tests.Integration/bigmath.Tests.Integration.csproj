@@ -55,6 +55,7 @@
     <Compile Include="EntryTestsSubstract.cs" />
     <Compile Include="EntryTestsMultiply.cs" />
     <Compile Include="EntryTestsFactorial.cs" />
+    <Compile Include="EntryTestsExponential.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\bigmath\bigmath.csproj">
