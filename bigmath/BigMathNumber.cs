@@ -39,14 +39,14 @@ namespace bigmath
     public static BigMathNumber operator *(BigMathNumber left, BigMathNumber right)
     {
       BigMathNumber answer = new BigMathNumber();
-
+      answer = BigMathHelper.Multiply(left, right);
       return answer;
     }
 
     public static BigMathNumber operator /(BigMathNumber left, BigMathNumber right)
     {
       BigMathNumber answer = new BigMathNumber();
-
+      //answer = BigMathHelper.Divide(left, right);
       return answer;
     }
 
