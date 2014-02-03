@@ -398,6 +398,37 @@ namespace bigmath
       return retVal;
     }
 
+    internal static BigMathNumber Exponential(BigMathNumber BaseNumber, BigMathNumber Exponent)
+    {
+      List<sbyte> baseNumber = BaseNumber.internalNumber;
+      List<sbyte> exponent = Exponent.internalNumber;
+      List<sbyte> answer = Exponential(baseNumber, exponent);
+
+      BigMathNumber theAnswer = new BigMathNumber();
+      theAnswer.internalNumber = answer;
+      return theAnswer;
+    }
+
+    private static List<sbyte> Exponential(List<sbyte> BaseNumber, List<sbyte> Exponent)
+    {
+      List<sbyte> retVal = new List<sbyte>();
+      List<sbyte> testVal = new List<sbyte>();
+      List<sbyte> exponent = new List<sbyte>();
+      exponent.AddRange(Exponent);
+      testVal.Add(0);
+      List<sbyte> decrementor = new List<sbyte>();
+      decrementor.Add(1);
+      List<sbyte> curAns = new List<sbyte>();
+
+      curAns.Add(1);
+      while ((exponent.Count > 1) || (exponent.Last() != 0 && (exponent.Count == 1)))
+      {
+        curAns = Multiply(curAns, BaseNumber);
+        exponent = Subtract(exponent, decrementor);
+      }
+      retVal.AddRange(curAns);
+      return retVal;
+    }
 
 
   }
