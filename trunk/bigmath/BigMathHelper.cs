@@ -8,13 +8,31 @@ namespace bigmath
 {
   static class BigMathHelper
   {
+
+    /// <summary>
+    /// Internal Add Method after numbers already converted.
+    /// </summary>
+    /// <param name="Left"></param>
+    /// <param name="Right"></param>
+    /// <returns></returns>
+    internal static BigMathNumber Add(BigMathNumber Left, BigMathNumber Right)
+    {
+      List<sbyte> left = Left.internalNumber;
+      List<sbyte> right = Right.internalNumber;
+      List<sbyte> answer = Add(left, right);
+
+      BigMathNumber theAnswer = new BigMathNumber();
+      theAnswer.internalNumber = answer;
+      return theAnswer;
+    }
+
     /// <summary>
     /// Internal Add Method after numbers already converted.
     /// </summary>
     /// <param name="Num1"></param>
     /// <param name="Num2"></param>
     /// <returns></returns>
-    internal static BigMathNumber Add(BigMathNumber Num1, BigMathNumber Num2)
+    private static List<sbyte> Add(List<sbyte> Num1, List<sbyte> Num2)
     {
       List<sbyte> retVal = new List<sbyte>();
       //CarryOver = new List<sbyte>();
@@ -22,15 +40,15 @@ namespace bigmath
       List<sbyte> smaller = new List<sbyte>();
       List<sbyte> answer = new List<sbyte>();
 
-      if (FirstNumberIsBigger(Num1.internalNumber, Num2.internalNumber))
+      if (FirstNumberIsBigger(Num1, Num2))
       {
-        bigger.AddRange(Num1.internalNumber);
-        smaller.AddRange(Num2.internalNumber);
+        bigger.AddRange(Num1);
+        smaller.AddRange(Num2);
       }
       else
       {
-        bigger.AddRange(Num2.internalNumber);
-        smaller.AddRange(Num1.internalNumber);
+        bigger.AddRange(Num2);
+        smaller.AddRange(Num1);
       }
 
       //add leading zeros to smaller number, if needed.
@@ -67,9 +85,7 @@ namespace bigmath
       }
 
       retVal.AddRange(answer);
-      BigMathNumber answerNumber = new BigMathNumber();
-      answerNumber.internalNumber = retVal;
-      return answerNumber;
+      return retVal;
     }
 
     /// <summary>
@@ -138,26 +154,37 @@ namespace bigmath
     /// <summary>
     /// Internal Subtract when we've already changed the string values into List Arrays.
     /// </summary>
-    /// <param name="Num1"></param>
-    /// <param name="Num2"></param>
+    /// <param name="Left"></param>
+    /// <param name="Right"></param>
     /// <returns></returns>
-    internal static BigMathNumber Subtract(BigMathNumber Num1, BigMathNumber Num2)
+    internal static BigMathNumber Subtract(BigMathNumber Left, BigMathNumber Right)
+    {
+      List<sbyte> left = Left.internalNumber;
+      List<sbyte> right = Right.internalNumber;
+      List<sbyte> answer = Subtract(left, right);
+
+      BigMathNumber theAnswer = new BigMathNumber();
+      theAnswer.internalNumber = answer;
+      return theAnswer;
+    }
+
+    private static List<sbyte> Subtract(List<sbyte> Num1, List<sbyte> Num2)
     {
       List<sbyte> retVal = new List<sbyte>();
       List<sbyte> bigger = new List<sbyte>();
       List<sbyte> smaller = new List<sbyte>();
       List<sbyte> answer = new List<sbyte>();
 
-      if (FirstNumberIsBigger(Num1.internalNumber, Num2.internalNumber))
-      {
+      if (FirstNumberIsBigger(Num1, Num2))
+      { 
         //copy to new array
-        bigger.AddRange(Num1.internalNumber);
-        smaller.AddRange(Num2.internalNumber);
+        bigger.AddRange(Num1);
+        smaller.AddRange(Num2);
       }
       else
       {
-        bigger.AddRange(Num2.internalNumber);
-        smaller.AddRange(Num1.internalNumber);
+        bigger.AddRange(Num2);
+        smaller.AddRange(Num1);
       }
 
       //build answer array [same size as 'bigger' number]
@@ -193,14 +220,11 @@ namespace bigmath
       //remove leading zeros, if any [down to last item]
       while ((answer.Last() == Convert.ToSByte(0)) && (answer.Count > 1))
       {
-        answer.RemoveAt(answer.Count - 1);
+        answer.RemoveAt(answer.Count - 1); 
       }
 
       retVal.AddRange(answer);
-      BigMathNumber answerNumber = new BigMathNumber();
-      answerNumber.internalNumber = answer;
-
-      return answerNumber;
+      return retVal;
     }
 
     private static bool BorrowAt(List<sbyte> number, int positionneeding)
@@ -233,7 +257,114 @@ namespace bigmath
       return retVal;
     }
 
+    /// <summary>
+    /// Multiply Method will multiply two numbers together returning as a BigMathNumber
+    /// </summary>
+    /// <param name="Left"></param>
+    /// <param name="Right"></param>
+    /// <returns></returns>
+    internal static BigMathNumber Multiply(BigMathNumber Left, BigMathNumber Right)
+    {
+      List<sbyte> left = Left.internalNumber;
+      List<sbyte> right = Right.internalNumber;
+      List<sbyte> answer = Multiply(left, right);
 
+      BigMathNumber theAnswer = new BigMathNumber();
+      theAnswer.internalNumber = answer;
+      return theAnswer;
+    }
+
+    private static List<sbyte> Multiply(List<sbyte> num1, List<sbyte> num2)
+    {
+      List<sbyte> retVal = new List<sbyte>();
+      List<sbyte> curAns = new List<sbyte>();
+      List<sbyte> curRow = new List<sbyte>();
+      List<sbyte> carry = new List<sbyte>();
+      List<sbyte> bigger = new List<sbyte>();
+      List<sbyte> smaller = new List<sbyte>();
+
+      if (FirstNumberIsBigger(num1, num2))
+      {
+        bigger.AddRange(num1);
+        smaller.AddRange(num2);
+      }
+      else
+      {
+        bigger.AddRange(num2);
+        smaller.AddRange(num1);
+      }
+
+      //build up an answer
+      while (bigger.Count + 3 > curAns.Count)
+      {
+        curAns.Add(0);
+      }
+
+      //build up carry over
+      while (bigger.Count + 3 > carry.Count)
+      {
+        carry.Add(0);
+      }
+
+      sbyte curNum = 0;
+
+      for (int i = 0; i < smaller.Count; i++)
+      {
+        //reset carryover for new number
+        for (int p = 0; p < carry.Count; p++)
+        {
+          carry[p] = 0;
+        }
+        //reset the current Row for new math
+        for (int q = 0; q < curRow.Count; q++)
+        {
+          curRow[q] = 0;
+        }
+        for (int x = 0; x < bigger.Count; x++)
+        {
+          curNum = Convert.ToSByte(smaller[i] * bigger[x]);
+          if (curNum > 10)
+          {
+            addToCarryOver(carry, Convert.ToSByte(curNum / 10), (x + i));
+            curNum = Convert.ToSByte(curNum % 10);
+          }
+          while (curRow.Count < (x + i) + 1)
+          {
+            curRow.Add(0);
+          }
+          curRow[x + i] = curNum;
+        }
+        //add in the carry over to the current Row [don't forget that we can still have a carry over here]
+        while (curRow.Count < (carry.Count + 1))
+        {
+          curRow.Add(0);
+        }
+        for (int e = 0; e < carry.Count; e++)
+        {
+          if ((curRow[e] + carry[e]) > 10)
+          {
+            curRow[e] = Convert.ToSByte(curRow[e] + (carry[e] - 10));
+            curRow[e + 1] = Convert.ToSByte(curRow[e + 1] + 1);
+          }
+          else
+          {
+            curRow[e] += carry[e];
+          }
+        }
+        curAns = Add(curAns, curRow);
+      }
+      retVal.AddRange(curAns);
+      return retVal;
+    }
+
+    private static void addToCarryOver(List<sbyte> carryList, sbyte amountToCarryOver, int positionFrom)
+    {
+      while (carryList.Count < positionFrom + 2)
+      {
+        carryList.Add(0);
+      }
+      carryList[positionFrom + 1] = amountToCarryOver;
+    }
 
   }
 }
