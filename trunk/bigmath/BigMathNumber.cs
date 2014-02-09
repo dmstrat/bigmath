@@ -6,21 +6,29 @@ using System.Threading.Tasks;
 
 namespace bigmath
 {
-  internal class BigMathNumber :  IEquatable<BigMathNumber>
+  internal struct BigMathNumber :  IEquatable<BigMathNumber>
   {
-    public List<sbyte> internalNumber {get;set;}
+    private List<sbyte> _internalNumber { get; set; }
 
-    public BigMathNumber()
+    public List<sbyte> internalNumber 
     {
-      Initialize();
+      get
+      {
+        if (_internalNumber == null)
+        {
+          _internalNumber = new List<sbyte>();
+        }
+        return _internalNumber;
+      }
+      set
+      {
+        _internalNumber = value;
+      }
     }
 
-    private void Initialize()
-    {
-      internalNumber = new List<sbyte>();
-      sbyte newNumber = 0;
-      internalNumber.Add(newNumber); //init as zero
-    }
+    private bool isInitialized { get; set; }
+
+#region Operators
 
     public static BigMathNumber operator +(BigMathNumber left, BigMathNumber right)
     {
@@ -60,35 +68,40 @@ namespace bigmath
       return !left.Equals(right);
     }
 
-    public static bool operator ==(BigMathNumber left, int right)
+    public static bool operator ==(BigMathNumber left, string right)
     {
       return left.Equals(right);
     }
 
-    public static bool operator !=(BigMathNumber left, int right)
+    public static bool operator !=(BigMathNumber left, string right)
     {
       return !left.Equals(right);
     }
 
-    public static implicit operator BigMathNumber(int value)
+    public static implicit operator BigMathNumber(string value)
     {
       var newBigNumber = new BigMathNumber();
       newBigNumber.SetValue(value);
       return newBigNumber;
     }
 
-    public void SetValue(int value)
-    {
-      this.SetValue(value.ToString());
-    }
+    //public static implicit operator BigMathNumber(int value)
+    //{
+    //  var newBigNumber = new BigMathNumber();
+    //  newBigNumber.SetValue(value);
+    //  return newBigNumber;
+    //}
 
-    public void SetValue(BigMathNumber value)
-    {
-      this.SetValue(value.ToString());
-    }
+#endregion
+
+    //public void SetValue(int value)
+    //{
+    //  this.SetValue(value.ToString());
+    //}
 
     public void SetValue(String value)
     {
+
       var newNumber = ConvertToList(value);
       internalNumber = new List<sbyte>();
       this.internalNumber.AddRange(newNumber);
@@ -96,6 +109,10 @@ namespace bigmath
 
     private List<sbyte> ConvertToList(string value)
     {
+      if (!BigMathHelper.IsNumeric(value))
+      {
+        throw new ArgumentOutOfRangeException("Value provided is not a valid number.");
+      }
       List<sbyte> newNumber = new List<sbyte>();
       for (int i = value.Length - 1; i >= 0; i--)
       {
@@ -106,6 +123,15 @@ namespace bigmath
 
     public override string ToString()
     {
+      if (internalNumber == null)
+      {
+        return "0"; 
+      }
+
+      if (internalNumber.Count == 0)
+      {
+        return "0";
+      }
       //remove leading zeros, but not the last
       while ((internalNumber.Last() == 0) && (internalNumber.Count > 1))
       {
@@ -120,9 +146,9 @@ namespace bigmath
       return retVal;
     }
 
-    public bool Equals(int other)
+    public bool Equals(string other)
     {
-      return AreEqual(this.ToString(), other.ToString());
+      return AreEqual(this.ToString(), other);
     }
 
     public bool Equals(BigMathNumber other)
@@ -134,7 +160,7 @@ namespace bigmath
     {
       try
       {
-        var otherNumber = other as BigMathNumber;
+        var otherNumber = (BigMathNumber)other;// as BigMathNumber;
         return this.Equals(otherNumber);
       }
       catch (Exception)
