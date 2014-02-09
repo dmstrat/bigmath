@@ -1,4 +1,5 @@
 #summary This is how things work in bigmath
+#labels Featured
 
 = Introduction =
 
