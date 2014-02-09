@@ -1,0 +1,15 @@
+#summary Implementation of the Factorial Method
+#labels Phase-Design
+
+= Introduction =
+
+We all know that 10! is 10*9*8*7*6*5*4*3*2*1 and that comes out to a very large number quickly. 3628800 to be exact.  Now can you imagine 100! ? 
+9.3326215443944152681699238856267 x 10 to the 157.  Project Euler had a question: what is the sum of the numbers that is the answer of 100 Factorial?  adding the numbers you see above isn't the right answer as there are more numbers, so how do we get all the numbers ourselves using bigmath? 
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
