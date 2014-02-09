@@ -27,7 +27,7 @@ The example would then become:
 
  * AddMethod - Adding one number to another
  * SubtractMethod - Subtracting one number from another (currently on positive final values allowed)
- * MultiplyMethod - Multiply two numbers together
+ * MultiplicationMethod - Multiply two numbers together
  * Divide - Not yet implemented.
  * FactorialMethod - one number given a factorial answer.
  * ExponentialMethod - one number to the second number. 
