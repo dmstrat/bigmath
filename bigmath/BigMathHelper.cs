@@ -9,6 +9,34 @@ namespace bigmath
   static class BigMathHelper
   {
 
+    internal static BigMathNumber ConvertStringToBigMathNumber(string number)
+    {
+      var newBigMathNumber = new BigMathNumber();
+      //is the number negative?
+      //is the number only a number?
+      //does the number contain a decimal? 
+      if(IsNumeric(number))
+      {
+        newBigMathNumber.SetValue(number);
+      }
+      else
+      {
+        throw new System.ArgumentOutOfRangeException("Value provided is not a valid Number");
+      }
+      return newBigMathNumber;
+    }
+
+    public static System.Boolean IsNumeric (string Expression)// System.Object Expression)
+    {
+      if(Expression == null)
+      {
+        return false;
+      }
+      
+      return (Expression as string).All(Char.IsNumber);
+    }
+
+
     /// <summary>
     /// Internal Add Method after numbers already converted.
     /// </summary>

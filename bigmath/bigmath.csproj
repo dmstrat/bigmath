@@ -42,6 +42,7 @@
     <Compile Include="BigMath.cs" />
     <Compile Include="BigMathHelper.cs" />
     <Compile Include="BigMathNumber.cs" />
+    <Compile Include="Exceptions\BaseBigMathException.cs" />
     <Compile Include="IBigMath.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
