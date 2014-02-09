@@ -1,0 +1,32 @@
+#summary This is how things work in bigmath
+
+= Introduction =
+
+I wanted something simple enough that could be handled later by a long string of math that could be parsed out and applied to big math logic eventually.  
+
+What I decided upon is the use of a list of sbytes that would represent a very large number.  Each Number, starting at the first list item, would represent a number column, like ones, tens, hundreds, thousands, etc.  
+
+That way we're doing math the old fashioned way: one number at a time.
+
+I found it interesting as the part I wanted to start with was multiplication but found that you have to teach our code how to add in order to do multiplication.  You even have to teach carry-over, too.  You never realize later in life how much you take for granted when something you've been doing for years by hand can become complicated when trying to convert it into code.
+
+= Assumptions = 
+We don't currently handle negative numbers.  That will come later. Same for decimal numbers, not designed yet. Maybe you can help?
+
+= Details =
+
+Example Number: 10203040506
+
+As all numbers are put in as strings since numbers could exceed the size of a int64 or long, we have to parse the number into our {{{List<sbyte>}}} for each number in question. 
+
+The example would then become: 
+{{{List<sbyte>  number = {6,0,5,0,4,0,3,0,2,0,1} }}} as all numbers have a ones column, but not necessarily anything higher.  Even if the number is zero, it would by {{{List<sbyte> number = {0} }}}
+
+= Implementations = 
+
+ * AddMethod - Adding one number to another
+ * SubtractMethod - Subtracting one number from another (currently on positive final values allowed)
+ * MultiplyMethod - Multiply two numbers together
+ * Divide - Not yet implemented.
+ * FactorialMethod - one number given a factorial answer.
+ * ExponentialMethod - one number to the second number. 
