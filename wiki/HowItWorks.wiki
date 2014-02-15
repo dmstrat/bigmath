@@ -1,11 +1,15 @@
-#summary This is how things work in bigmath
+#summary This is how things work in Bigmath.
 #labels Featured
 
 = Introduction =
 
-I wanted something simple enough that could be handled later by a long string of math that could be parsed out and applied to big math logic eventually.  
+The concept of Bigmath is simple and can be compared with water in cups.  A small cup can hold a small amount of water, and when someone attempts to put more water into the cup than it can hold, it overflows and they will have water all over the table.  A larger cup of course can hold more water, but even that cup has limits, and when someone attempts to put more water in that cup than it can hold it too will overflow.  
 
-What I decided upon is the use of a list of sbytes that would represent a very large number.  Each Number, starting at the first list item, would represent a number column, like ones, tens, hundreds, thousands, etc.  
+In C#, our cups are normally the int variable type.  It can come in a few flavors, normal int, 32 int, and 64 int, but currently no higher than 64 bit, which limits our numbers to from -18446744073709551615 to 18446744073709551616 or unsigned 64 bit int which the top number will be 0 - 36893488147419103232.  The largest cup available to us in C# is the double which is ±5.0 × 10−324 to ±1.7 × 10+308.  This is indeed much larger, but precision is limited to 15 – 16 digits.  It should never be used for anything requiring a degree of precision.
+
+What we want is something than handle larger values and this cup is called a string in C#, a string is enormous, holding 2 gigabytes worth of information, however it is not designed for mathmatical operations.  What we are trying to achieve is turning a string into an accurate method of handling numbers larger than ints, floats, doubles, or decimals.
+
+Our current method to achieving this goal is to use sbytes, and in return these sbytes will represent numbers well beyond the range of current mathmatical variables.  Each number, starting at the first list item, would represent a number column, like ones, tens, hundreds, thousands, etc.  
 
 That way we're doing math the old fashioned way: one number at a time.
 
