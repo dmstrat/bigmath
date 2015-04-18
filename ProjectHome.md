@@ -1,0 +1,3 @@
+I had a great time solving math problems for the Euler project and built this math tool when building for the answer for the 100! problem.  However, I found myself enjoying the idea of teaching math into code so I expanded it to include division, exponential, and subtraction.  I'd like to see this flourish into something that would be a great library for very large number, like when determining Prime Numbers even if we don't use those very complicated math equations.
+
+Brute force isn't a bad thing to begin with.

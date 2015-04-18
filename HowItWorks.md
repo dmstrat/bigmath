@@ -1,0 +1,34 @@
+# Introduction #
+
+The concept of Bigmath is simple and can be compared with water in cups.  A small cup can hold a small amount of water, and when someone attempts to put more water into the cup than it can hold, it overflows and they will have water all over the table.  A larger cup of course can hold more water, but even that cup has limits, and when someone attempts to put more water in that cup than it can hold it too will overflow.
+
+In C#, our cups are normally the int variable type.  It can come in a few flavors, normal int, 32 int, and 64 int, but currently no higher than 64 bit, which limits our numbers to from -18446744073709551615 to 18446744073709551616 or unsigned 64 bit int which the top number will be 0 - 36893488147419103232.  The largest cup available to us in C# is the double which is ±5.0 × 10−324 to ±1.7 × 10+308.  This is indeed much larger, but precision is limited to 15 – 16 digits.  It should never be used for anything requiring a degree of precision.
+
+What we want is something than handle larger values and this cup is called a string in C#, a string is enormous, holding 2 gigabytes worth of information, however it is not designed for mathmatical operations.  What we are trying to achieve is turning a string into an accurate method of handling numbers larger than ints, floats, doubles, or decimals.
+
+Our current method to achieving this goal is to use sbytes, and in return these sbytes will represent numbers well beyond the range of current mathmatical variables.  Each number, starting at the first list item, would represent a number column, like ones, tens, hundreds, thousands, etc.
+
+That way we're doing math the old fashioned way: one number at a time.
+
+I found it interesting as the part I wanted to start with was multiplication but found that you have to teach our code how to add in order to do multiplication.  You even have to teach carry-over, too.  You never realize later in life how much you take for granted when something you've been doing for years by hand can become complicated when trying to convert it into code.
+
+# Assumptions #
+We don't currently handle negative numbers.  That will come later. Same for decimal numbers, not designed yet. Maybe you can help?
+
+# Details #
+
+Example Number: 10203040506
+
+As all numbers are put in as strings since numbers could exceed the size of a int64 or long, we have to parse the number into our `List<sbyte>` for each number in question.
+
+The example would then become:
+`List<sbyte>  number = {6,0,5,0,4,0,3,0,2,0,1} ` as all numbers have a ones column, but not necessarily anything higher.  Even if the number is zero, it would by `List<sbyte> number = {0} `
+
+# Implementations #
+
+  * AddMethod - Adding one number to another
+  * SubtractMethod - Subtracting one number from another (currently on positive final values allowed)
+  * MultiplicationMethod - Multiply two numbers together
+  * Divide - Not yet implemented.
+  * FactorialMethod - one number given a factorial answer.
+  * ExponentialMethod - one number to the second number.
