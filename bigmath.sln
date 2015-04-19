@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bigmath", "bigmath\bigmath.csproj", "{577EDB70-DCCB-4E72-9AD5-52B31CCCBD66}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1DFA22CC-96EF-4C3B-8EB1-B49F0D10D658}"
@@ -8,6 +10,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bigmath.Tests.Unit", "Tests\bigmath.Tests.Unit\bigmath.Tests.Unit.csproj", "{5D5E1508-20FB-4B9A-A1F3-7ADB21DE6307}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bigmath.Tests.Integration", "Tests\bigmath.Tests.Integration\bigmath.Tests.Integration.csproj", "{8002EC4C-8DE5-4B62-BD14-7DC764ACF7E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8A61D3B5-F0A1-46BC-83CC-E1D036AE3904}"
+	ProjectSection(SolutionItems) = preProject
+		bigmath.proj = bigmath.proj
+		CodeCoverage.runsettings = CodeCoverage.runsettings
+		sonar-project.properties = sonar-project.properties
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

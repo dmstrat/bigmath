@@ -206,11 +206,13 @@ namespace bigmath.Tests.Unit
     }
 
     [TestMethod]
-    [ExpectedException(typeof(System.ArgumentOutOfRangeException),"BigMathDoesntAllowNegativeNumbersYet: Invalid Number was provided, but somehow was allowed")]
+    [ExpectedException(typeof(System.ArgumentOutOfRangeException), "BigMathDoesntAllowNegativeNumbersYet: Invalid Number was provided, but somehow was allowed")]
     public void BigMathDoesntAllowNegativeNumbersYet()
     {
-      var testNumber = "-123456";
-      testBigNumber.SetValue(testNumber);
+      var testItem = new BigMathNumber();
+      testItem = "-123456";
+      string testItem2 = "200";
+      Assert.IsTrue(testItem != testItem2);
     }
 
   }
